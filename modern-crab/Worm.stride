@@ -13,7 +13,19 @@
             <javadoc xml:space="preserve">Act - do whatever the Worm wants to do. This method is called whenever the 'Act' or 'Run' button gets pressed in the environment.</javadoc>
             <params/>
             <throws/>
-            <body/>
+            <body>
+                <if condition="isTouching(Lobster.class)" condition-java="isTouching(Lobster.class)" enable="true">
+                    <ifStatements>
+                        <variable type="World" type-java="World" name="world" value="(World)getWorld()" value-java="(World)getWorld()" enable="true"/>
+                        <variable type="int" type-java="int" name="x" value="getX()" value-java="getX()" enable="true"/>
+                        <variable type="int" type-java="int" name="y" value="getY()" value-java="getY()" enable="true"/>
+                        <call expression="world.removeObject(this)" expression-java="world.removeObject(this)" enable="true"/>
+                        <variable type="Lobster" type-java="Lobster" name="newLobster" value="new Lobster()" value-java=" new Lobster()" enable="true"/>
+                        <call expression="world.addObject(newLobster,x,y)" expression-java="world.addObject(newLobster, x, y)" enable="true"/>
+                        <call expression="Greenfoot.playSound(&quot;eating.wav&quot;)" expression-java="Greenfoot.playSound(&quot;eating.wav&quot;)" enable="true"/>
+                    </ifStatements>
+                </if>
+            </body>
         </method>
     </methods>
 </class>

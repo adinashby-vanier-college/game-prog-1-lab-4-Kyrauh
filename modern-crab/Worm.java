@@ -14,5 +14,14 @@ public class Worm extends Actor
      */
     public void act()
     {
+        if (isTouching(Lobster.class)) {
+            World world = (World)getWorld();
+            int x = getX();
+            int y = getY();
+            world.removeObject(this);
+            Lobster newLobster =  new  Lobster();
+            world.addObject(newLobster, x, y);
+            Greenfoot.playSound("eating.wav");
+        }
     }
 }
